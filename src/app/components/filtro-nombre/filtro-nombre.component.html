@@ -1,0 +1,45 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    Búsqueda
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <input type="text" class="form-control" (keyup)="getDigimonsByNombre($event)" placeholder="Agumon">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="text-align:center;">
+    <br>
+    <div *ngIf="digimon_nombre==undefined">
+        No hay resultados para mostrar
+    </div>
+    <div *ngFor="let digimon of digimon_nombre">
+        <div class="card mb-3" style="max-width: 540px;margin: auto;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img class="card-img-top" src="{{ digimon.img }}" alt="Card image cap">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ digimon.name }}</h5>
+                        <p class="card-text">Id :{{ digimon.id }}</p>
+                        <p class="card-text">Name :{{ digimon.name }}</p>
+                        <p class="card-text">Level :{{ digimon.level }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

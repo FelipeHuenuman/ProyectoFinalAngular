@@ -1,0 +1,75 @@
+<!-- Show Loading symbol if there are no pokemon or all 151 haven't loaded-->
+
+
+
+
+<div style="text-align:center;">
+    <br>
+    <div class="loading" *ngIf="!digimonsLoaded">
+        LOADING DIGIMONS...
+    </div>
+
+
+    <div *ngFor="let digimon of digimons">
+
+        <div class="card mb-3" style="max-width: 540px;margin: auto;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img class="card-img-top" src="{{ digimon.img }}" alt="Card image cap">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ digimon.name }}</h5>
+                        <p class="card-text">Id :{{ digimon.id }}</p>
+                        <p class="card-text">Name :{{ digimon.name }}</p>
+                        <p class="card-text">Level :{{ digimon.level }}</p>
+
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" (click)="getDigimonsById(digimon.id)">
+                            Ver más...
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">EJEMPLO ID</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let digimon of digimon_id">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <img class="card-img-top" src="{{ digimon.img }}" alt="Card image cap">
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <form>
+                                    <div class="form-group">
+                                        <label>Nombre :</label>
+                                        <input type="text" class="form-control" readonly value="{{digimon.name}}">
+                                        <label>Level :</label>
+                                        <input type="text" class="form-control" readonly value="{{digimon.level}}">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
